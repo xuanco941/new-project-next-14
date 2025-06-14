@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0d12;
+  --foreground: #CECFD2;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  color: var(--foreground) !important;
+  background: var(--background) !important;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+}
+
+.scroll-container {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  overscroll-behavior: none;
+  line-height: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hidden-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+:where([data-sonner-toast]) :where([data-close-button]) {
+  background: rgba(255, 255, 255, 0.20) !important;
+  color: #94969c !important;
+  border-radius: 8px !important;
+  border: none !important;
+  /* left: var(--toast-close-button-end) !important;
+  right: var(--toast-close-button-start) !important; */
+}
+
+:where([data-sonner-toast]) :where([data-title]) {
+  font-weight: 700 !important;
+  font-size: 14px !important;
+}
+
+.icon-svg path {
+  color: currentColor;
+  stroke: currentColor;
+}
+
+.gradient-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333741;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #46484e;
+}
+
+/* Chrome, Safari, Edge, Opera ẩn nút tăng giảm trong input khi type = number*/
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0 !important;
+}
+
+/* Internet Explorer 10+ , FireFox */
+input[type=number] {
+  -ms-appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  color-scheme: dark;
+}
