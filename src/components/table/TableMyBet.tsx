@@ -1,9 +1,8 @@
-import CustomText from "@/components/CustomText";
 import Loading from "@/components/loading/Loading";
 import { useTheme } from "@/providers/theme/ThemeProvider";
 import {
   Box,
-  Grid2,
+  Grid,
   Paper,
   Table,
   TableBody,
@@ -14,9 +13,9 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Flex from "@/components/Flex";
-import { PageInfo } from "../IDice";
 import { formatDateUS, formatNumber } from "@/utils/helpers";
 import { useI18n } from "@/locales/clients";
+import { PageInfo } from "./TableBet";
 
 interface TableMyBetProps {
   pageInfo: PageInfo;
@@ -27,7 +26,7 @@ const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
   const { theme, themeName } = useTheme();
   const [loading, setLoading] = useState(true);
   const t = useI18n();
-  const cells: string[] = [t("Phiên"), t("Thời gian cược"), t("Tiền cược"), t("Loại"), t("Hệ số nhân"), t("Kết quả"), t("Trả thưởng")];
+  const cells: string[] = ["Phiên", "Thời gian", "Tiền", "Loại", "Hệ số nhân", "Kết quả", "Trả thưởng"];
 
   useEffect(() => {
     setLoading(true);
@@ -78,7 +77,7 @@ const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
                   borderRadius: index == 0 ? "5px 0px 0px 5px" : index == cells.length - 1 ? "0px 5px 5px 0px" : "0px",
                 }}
               >
-                <CustomText
+                <Box
                   sx={{
                     fontWeight: "600",
                     whiteSpace: "nowrap",
@@ -87,7 +86,7 @@ const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
                   }}
                 >
                   {item}
-                </CustomText>
+                </Box>
               </TableCell>);
             })}
           </TableRow>
@@ -96,9 +95,9 @@ const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
           {loading ? (
             <TableRow sx={{ backgroundColor: theme.bgSecondary }}>
               <TableCell colSpan={cells.length} align="center">
-                <Grid2 display="flex" justifyContent="center">
+                <Grid justifyContent="center">
                   <Loading />
-                </Grid2>
+                </Grid>
               </TableCell>
             </TableRow>
           ) : (
@@ -118,30 +117,30 @@ const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
                       borderRadius: "0px",
                     }}
                   >
-                    <CustomText sx={{ fontWeight: "600", color: theme.fgPrimary }}>
-                      {item.TurnID}
-                    </CustomText>
+                    <Box sx={{ fontWeight: "600", color: theme.fgPrimary }}>
+                      1
+                    </Box>
                   </TableCell>
                   <TableCell>
-                    <CustomText
+                    <Box
                       sx={{
                         fontWeight: "600",
                         color: theme.fgPrimary,
                         textAlign: "center",
                       }}
                     >
-                      {formatDateUS(item.CreatedTime)}
-                    </CustomText>
+                      2001-09-09
+                    </Box>
                   </TableCell>
                   <TableCell>
 
                     <Flex sx={{ justifyContent: "center", gap: "6px" }}>
 
-                      <CustomText
+                      <Box
                         sx={{ fontWeight: "600", color: theme.colorPrimary }}
                       >
-                        {formatNumber(item.BetValue)}
-                      </CustomText>
+                        {formatNumber(10000)}
+                      </Box>
                     </Flex>
 
                   </TableCell>
@@ -149,12 +148,12 @@ const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
 
                     <Flex sx={{ justifyContent: "center", gap: "6px" }}>
 
-                      <CustomText
+                      <Box
                         sx={{ fontWeight: "600", color: theme.fgPrimary }}
                       >
-                        {item.LocationID == 1 ? t("Cửa trên") : t("Cửa dưới")}
+                        Cửa dưới
 
-                      </CustomText>
+                      </Box>
                     </Flex>
 
                   </TableCell>
@@ -162,12 +161,12 @@ const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
 
                     <Flex sx={{ justifyContent: "center", gap: "6px" }}>
 
-                      <CustomText
+                      <Box
                         sx={{ fontWeight: "600", color: theme.fgPrimary }}
                       >
-                        {item.Mul}
+                        5x
 
-                      </CustomText>
+                      </Box>
                     </Flex>
 
                   </TableCell>
@@ -175,20 +174,20 @@ const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
 
 
                     <div className="flex justify-center">
-                      <CustomText
+                      <Box
                         sx={{
                           fontWeight: "600",
-                          background: item.PrizeValue > 0 ? 'rgba(114, 242, 56, 0.12)' : theme.bgTertiary,
-                          color: item.PrizeValue > 0 ? theme.colorSuccess : theme.fgTertiary,
+                          background: 1 > 0 ? 'rgba(114, 242, 56, 0.12)' : theme.bgTertiary,
+                          color: 1 > 0 ? theme.colorSuccess : theme.fgTertiary,
                           padding: "4px 10px",
                           borderRadius: "6px",
-                          border: item.PrizeValue > 0 ? `1px solid ${theme.colorSuccess}` : `1px solid #61646C`,
+                          border: 1 > 0 ? `1px solid ${theme.colorSuccess}` : `1px solid #61646C`,
                           width: "fit-content",
                           textAlign: "center"
                         }}
                       >
-                        {item.DiceValue}
-                      </CustomText>
+                        100
+                      </Box>
                     </div>
                   </TableCell>
 
@@ -197,11 +196,11 @@ const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
 
                     <Flex sx={{ justifyContent: "end", gap: "6px" }}>
 
-                      <CustomText
-                        sx={{ fontWeight: "600", color: item.PrizeValue > 0 ? theme.colorSuccess : theme.fgPrimary }}
+                      <Box
+                        sx={{ fontWeight: "600", color: 1 > 0 ? theme.colorSuccess : theme.fgPrimary }}
                       >
-                        {formatNumber(item.PrizeValue)}
-                      </CustomText>
+                        {formatNumber(1)}
+                      </Box>
                     </Flex>
 
                   </TableCell>

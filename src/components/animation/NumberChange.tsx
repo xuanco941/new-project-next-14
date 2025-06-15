@@ -37,7 +37,7 @@ function NumberChange({ sx, value, maxDecimalDigits, minDecimalDigits, isShortNu
         });
 
         return controls.stop;
-    }, [value, motionValue]);
+    }, [value, motionValue, duration]);
 
 
     return <Box component={"span"} sx={{ ...sx }}>

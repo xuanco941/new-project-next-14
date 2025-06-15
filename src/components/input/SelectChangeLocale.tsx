@@ -3,10 +3,10 @@ import Flex from "@/components/Flex";
 import FlexReverse from "@/components/FlexReverse";
 import { useTheme } from "@/providers/theme/ThemeProvider";
 import React from "react";
-import CustomSelect, { ListSelect } from "./CustomSelect";
 import { LANGUAGE } from "@/contans/LANGUAGE";
 import { useCurrentLocale, useI18n } from "@/locales/clients";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import CustomSelect, { ListSelect } from "../CustomSelect";
 
 function SelectChangeLocale() {
     const router = useRouter();

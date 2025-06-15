@@ -3,6 +3,7 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import React from 'react';
 import { useTheme } from '@/providers/theme/ThemeProvider';
+import { SxProps } from '@mui/material';
 
 interface ModalBlurProps {
   open: boolean;
@@ -13,9 +14,11 @@ interface ModalBlurProps {
   transform?: string;
   boxShadow?: any;
   blur?: number;
+  sx?: SxProps;
+  sxModal?: SxProps;
 }
 
-const ModalBlur: React.FC<ModalBlurProps> = ({ open, handleClose, children, top, left, transform, boxShadow, blur }) => {
+const ModalBlur: React.FC<ModalBlurProps> = ({ open, handleClose, children, top, left, transform, boxShadow, blur, sx, sxModal }) => {
   const { themeName } = useTheme();
   return (
     <Modal
@@ -28,7 +31,8 @@ const ModalBlur: React.FC<ModalBlurProps> = ({ open, handleClose, children, top,
         '& .MuiModal-backdrop': {
           backgroundColor: themeName == "dark" ? 'rgba(255, 255, 255, 0.1)' : "rgba(0, 0, 0, 0.5)",
           maxHeight: '100dvh', outline: 0, backdropFilter: `blur(${blur ?? 8}px)`
-        }
+        },
+        ...sxModal
       }}
       disablePortal={true}
     // disableRestoreFocus={false}
@@ -44,7 +48,8 @@ const ModalBlur: React.FC<ModalBlurProps> = ({ open, handleClose, children, top,
           transform: transform ?? 'translate(-50%, -50%)',
           boxShadow: boxShadow ?? 24,
           outline: 'none',
-          borderRadius: { xs: "8px", md: "12px" }
+          borderRadius: { xs: "8px", md: "12px" },
+          ...sx
         }}>
         {children}
       </Box>

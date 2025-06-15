@@ -11,7 +11,7 @@ import {
   Theme,
   styled,
   Fade,
-  Grid2,
+  Grid,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CustomInput from "./input/CustomInput";
@@ -156,7 +156,7 @@ const CustomSelectSearch: React.FC<CustomSelectProps> = ({
                 }}
               >
                 {/* Ô tìm kiếm trong dropdown */}
-                <Grid2
+                <Grid
                   sx={{
                     padding: "8px",
                     background: theme.bgDefault,
@@ -193,7 +193,7 @@ const CustomSelectSearch: React.FC<CustomSelectProps> = ({
                       },
                     }}
                   />
-                </Grid2>
+                </Grid>
                 <FlexReverse
                   sx={{
                     width: "100%",

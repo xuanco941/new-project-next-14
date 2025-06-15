@@ -6,6 +6,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import TableMyBet from "./TableMyBet";
 import CustomButton from "@/components/button/CustomButton";
 import { useI18n } from "@/locales/clients";
+import TableTheme from "./TableTheme";
 
 export interface PageInfo {
   page: number,
@@ -63,14 +64,14 @@ const TableBet = ({ pageInfo, setPageInfo }: { pageInfo: PageInfo, setPageInfo: 
       </Flex> */}
       <TableTheme ><TableMyBet pageInfo={pageInfo} /></TableTheme>
       <Flex sx={{ alignItems: "center" }}>
-        <Box sx={{ fontSize: { xs: "12px", color: theme.fgPrimary } }}>{t("Trang")} {pageInfo.page} / {pageInfo.totalPage}</Box>
+        <Box sx={{ fontSize: { xs: "12px", color: theme.fgPrimary } }}>Trang {pageInfo.page} / {pageInfo.totalPage}</Box>
         <Flex sx={{ gap: "6px" }}>
           <CustomButton disabled={pageInfo.page <= 1} onClick={() => {
             setPageInfo((prev) => ({ ...prev, page: prev.page <= 1 ? 1 : prev.page - 1 }))
-          }} isOutLine sx={{ borderColor: theme.borderComponent, height: "35px", minHeight: "35px", fontSize: "12px", fontWeight: "700", color: theme.fgPrimary }}>{t("Trước")}</CustomButton>
+          }} isOutLine sx={{ borderColor: theme.borderComponent, height: "35px", minHeight: "35px", fontSize: "12px", fontWeight: "700", color: theme.fgPrimary }}>Trước</CustomButton>
           <CustomButton disabled={pageInfo.page >= pageInfo.totalPage} onClick={() => {
             setPageInfo((prev) => ({ ...prev, page: prev.page >= prev.totalPage ? prev.totalPage : prev.page + 1 }))
-          }} isOutLine sx={{ borderColor: theme.borderComponent, height: "35px", minHeight: "35px", fontSize: "12px", fontWeight: "700", color: theme.fgPrimary }}>{t("Sau")}</CustomButton>
+          }} isOutLine sx={{ borderColor: theme.borderComponent, height: "35px", minHeight: "35px", fontSize: "12px", fontWeight: "700", color: theme.fgPrimary }}>Sau</CustomButton>
         </Flex>
       </Flex>
     </FlexReverse>

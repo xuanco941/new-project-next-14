@@ -34,7 +34,7 @@ export default function FullScreen({
       const wrapper = document.createElement("div");
       wrapper.id = "fullscreen-wrapper";
       wrapper.style.padding = isMobile ? "1dvh 1vw" : "1dvh 5vw";
-      wrapper.style.background = theme.bgDefault; // Tùy bạn chọn
+      wrapper.style.background = theme.bgDefault;
       wrapper.style.width = "100%";
       wrapper.style.height = "100%";
       wrapper.style.boxSizing = "border-box";
