@@ -32,13 +32,13 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [themeName, setThemeName] = useState<string>("dark");
+  const [themeName, setThemeName] = useState<string>("light");
   const [disabled, setDisabled] = useState<boolean>(false);
 
   const theme = themes[themeName];
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("themeName") || "dark";
+      const savedTheme = localStorage.getItem("themeName") || "light";
       setThemeName(savedTheme);
     }
   }, []);

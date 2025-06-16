@@ -5,8 +5,8 @@ import Providers from "@/providers/Providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "VMG Game",
-  description: "VMG Game",
+  title: "Next.js App",
+  description: "Next.js App",
 };
 export const viewport: Viewport = {
   themeColor: "#0a0d12",
