@@ -15,14 +15,14 @@ import React, { useEffect, useState } from "react";
 import Flex from "@/components/Flex";
 import { formatDateUS, formatNumber } from "@/utils/helpers";
 import { useI18n } from "@/locales/clients";
-import { PageInfo } from "./TableBet";
+import { PageInfo } from "./TableTab";
 
-interface TableMyBetProps {
+interface TableDataProps {
   pageInfo: PageInfo;
 }
 
 
-const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
+const TableData: React.FC<TableDataProps> = ({ pageInfo }) => {
   const { theme, themeName } = useTheme();
   const [loading, setLoading] = useState(true);
   const t = useI18n();
@@ -215,4 +215,4 @@ const TableMyBet: React.FC<TableMyBetProps> = ({ pageInfo }) => {
   )
 }
 
-export default React.memo(TableMyBet);
+export default React.memo(TableData);

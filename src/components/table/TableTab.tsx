@@ -3,7 +3,7 @@ import FlexReverse from "@/components/FlexReverse";
 import { useTheme } from "@/providers/theme/ThemeProvider";
 import { Box, Button } from "@mui/material";
 import React, { Dispatch, SetStateAction } from "react";
-import TableMyBet from "./TableMyBet";
+import TableMyBet from "./TableData";
 import CustomButton from "@/components/button/CustomButton";
 import { useI18n } from "@/locales/clients";
 import TableTheme from "./TableTheme";
@@ -18,7 +18,7 @@ export interface PageInfo {
 
 
 
-const TableBet = ({ pageInfo, setPageInfo }: { pageInfo: PageInfo, setPageInfo: Dispatch<SetStateAction<PageInfo>> }) => {
+const TableTab = ({ pageInfo, setPageInfo }: { pageInfo: PageInfo, setPageInfo: Dispatch<SetStateAction<PageInfo>> }) => {
 
   const { theme } = useTheme();
   const t = useI18n();
@@ -78,4 +78,4 @@ const TableBet = ({ pageInfo, setPageInfo }: { pageInfo: PageInfo, setPageInfo: 
   );
 }
 
-export default TableBet;
+export default TableTab;
