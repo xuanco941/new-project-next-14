@@ -1,4 +1,4 @@
-import Loading from '@/components/loading/Loading';
+import Loading from '@/components/common/loading/Loading';
 import React, { ReactNode, useEffect, useState } from 'react';
 
 const preloadImages = (imageUrls: string[]): Promise<void> => {

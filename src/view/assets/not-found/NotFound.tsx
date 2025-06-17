@@ -1,5 +1,5 @@
 'use client'
-import CustomText from '@/components/text/CustomText'
+import CustomText from '@/components/common/text/CustomText'
 import React from 'react'
 
 function NotFound() {

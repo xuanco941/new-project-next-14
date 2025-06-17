@@ -2,11 +2,6 @@ import { get, post } from "./request";
 
 export const PORTAL_END_POINT = process.env.NEXT_PUBLIC_API_PORTAL as string;
 
-export const getWalletsAccount = async () => {
-    const resp = await get(`${PORTAL_END_POINT}/Account/GetAccountBalance`);
-    return resp;
-};
-
 export const getAccountInfo = async () => {
     const resp = await get(`${PORTAL_END_POINT}/Authen/RefreshToken`);
     return resp;

@@ -1,4 +1,4 @@
-import Flex from '@/components/Flex';
+import Flex from '@/components/common/Flex';
 import { useTheme } from '@/providers/theme/ThemeProvider';
 import { ReactNode, useCallback } from 'react';
 import CustomText from './text/CustomText';

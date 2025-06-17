@@ -6,13 +6,9 @@ import { jwtDecode } from "jwt-decode";
 //axios interceptors
 axios.interceptors.request.use(
     async (config) => {
-        let token = localStorage.getItem(LOCAL_STORAGE_VARIABLE.ACCESS_TOKEN_KEY);
+        const token = localStorage.getItem(LOCAL_STORAGE_VARIABLE.ACCESS_TOKEN_KEY);
         if (token && isJWTExpired(token)) {
-            token = await refreshAccessToken();
-        }
-
-        if (token) {
-            config.headers["Authorization"] = `Bearer ${token}`;
+           await refreshAccessToken();
         }
 
         return config;
@@ -48,7 +44,7 @@ const setAccessTokenToUrl = (url: string) => {
     return url;
 };
 
-function isJWTExpired(token: string) {
+export function isJWTExpired(token: string) {
     if (!token || token.split('.').length !== 3) {
         return true;
     }
@@ -57,7 +53,7 @@ function isJWTExpired(token: string) {
     return decodedToken.exp && decodedToken.exp - 10 < currentTime;
 }
 
-const refreshAccessToken = async (): Promise<string | null> => {
+export const refreshAccessToken = async (): Promise<string | null> => {
     const refreshToken = localStorage.getItem(LOCAL_STORAGE_VARIABLE.REFRESH_TOKEN_KEY);
     if (!refreshToken) return null;
 

@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 import ThemeProvider from "./theme/ThemeProvider";
 import { Toaster } from "sonner";
 import { I18nProviderClient } from "@/locales/clients";
-import Flex from "@/components/Flex";
+import Flex from "@/components/common/Flex";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 
 function Providers({

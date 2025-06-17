@@ -1,10 +1,10 @@
-import Flex from "@/components/Flex";
-import FlexReverse from "@/components/FlexReverse";
+import Flex from "@/components/common/Flex";
+import FlexReverse from "@/components/common/FlexReverse";
 import { useTheme } from "@/providers/theme/ThemeProvider";
 import { Box, Button } from "@mui/material";
 import React, { Dispatch, SetStateAction } from "react";
 import TableMyBet from "./TableData";
-import CustomButton from "@/components/button/CustomButton";
+import CustomButton from "@/components/common/button/CustomButton";
 import { useI18n } from "@/locales/clients";
 import TableTheme from "./TableTheme";
 

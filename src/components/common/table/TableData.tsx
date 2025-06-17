@@ -1,4 +1,4 @@
-import Loading from "@/components/loading/Loading";
+import Loading from "@/components/common/loading/Loading";
 import { useTheme } from "@/providers/theme/ThemeProvider";
 import {
   Box,
@@ -12,7 +12,7 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Flex from "@/components/Flex";
+import Flex from "@/components/common/Flex";
 import { formatDateUS, formatNumber } from "@/utils/helpers";
 import { useI18n } from "@/locales/clients";
 import { PageInfo } from "./TableTab";

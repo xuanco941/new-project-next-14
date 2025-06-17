@@ -1,6 +1,6 @@
-import CustomText from "@/components/text/CustomText";
-import Flex from "@/components/Flex";
-import FlexReverse from "@/components/FlexReverse";
+import CustomText from "@/components/common/text/CustomText";
+import Flex from "@/components/common/Flex";
+import FlexReverse from "@/components/common/FlexReverse";
 import { useTheme } from "@/providers/theme/ThemeProvider";
 import React from "react";
 import { LANGUAGE } from "@/contans/LANGUAGE";
