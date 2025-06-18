@@ -1,1 +1,1 @@
-export {default} from "@/view/login"
+export {default} from "@/view/login/Login"

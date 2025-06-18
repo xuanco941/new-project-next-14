@@ -25,7 +25,6 @@ export const setTokenInHeaders = (accessToken: string | undefined, refreshToken?
         axios.defaults.headers["Authorization"] = `Bearer ${accessToken}`;
         localStorage.setItem(LOCAL_STORAGE_VARIABLE.ACCESS_TOKEN_KEY, accessToken);
     } else {
-        console.log("delete token");
         delete axios.defaults.headers["Authorization"];
         localStorage.removeItem(LOCAL_STORAGE_VARIABLE.ACCESS_TOKEN_KEY);
     }

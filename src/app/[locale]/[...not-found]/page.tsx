@@ -1,1 +1,1 @@
-export {default} from "@/view/assets/not-found/NotFound"
+export {default} from "@/view/not-found/NotFound"

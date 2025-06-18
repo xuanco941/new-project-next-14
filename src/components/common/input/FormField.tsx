@@ -1,72 +1,62 @@
 // FormField.tsx
-import React from 'react';
-import { Controller, Control,} from 'react-hook-form';
-import CustomInput from './CustomInput';
-import CustomText from '../text/CustomText';
-import FlexReverse from '../FlexReverse';
-import { useTheme } from '@/providers/theme/ThemeProvider';
+import React, { useState } from "react";
+import { Controller, Control, FieldErrors } from "react-hook-form";
+import CustomInput, { CustomInputProps } from "./CustomInput";
+import { Box, FormControl, FormLabel, SxProps } from "@mui/material";
+import useDetect from "@/hooks/useDetect";
+import FlexReverse from "../FlexReverse";
 
-interface FormFieldProps {
+interface FormFieldProps extends CustomInputProps {
   name: string;
   control: Control<any>;
   label: string;
-  type?: string;
-  handleChangeAmount?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
   errors: any;
-  handleBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  sxError?: SxProps;
 }
 
 const FormField: React.FC<FormFieldProps> = ({
   name,
   control,
   label,
-  type = 'text',
-  handleChangeAmount,
-  value,
   errors,
-  handleBlur,
+  sxError = {},
+  ...props
 }) => {
-  const { theme } = useTheme();
+  const { isMobile } = useDetect();
   return (
-    <FlexReverse sx={{ width: '100%' }}>
-      <Controller
-        name={name}
-        control={control}
-        render={({ field }) => (
-          <CustomInput
-            {...field}
-            value={value}
-            handleChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              field.onChange(e); // Cập nhật giá trị cho react-hook-form
-              if (handleChangeAmount) handleChangeAmount(e); // Gọi hàm xử lý định dạng nếu được truyền vào
-            }}
-            handleBlur={(e: React.FocusEvent<HTMLInputElement>) => {
-              field.onBlur(); // Call the onBlur from react-hook-form
-              if (handleBlur) handleBlur(e); // Call the custom onBlur if provided
-            }}
-            placeholder={label}
-            type={type}
-            //   endAdornment={
-            //     errors[name] ? (
-            //       <ErrorSvg style={{ width: '24px' }} />
-            //     ) : amount ? (
-            //       <SuccessSvg style={{ width: '24px' }} />
-            //     ) : (
-            //       <></>
-            //     )
-            //   }
+    <FormControl>
+      <FormLabel htmlFor={name}>{label}</FormLabel>
+      <FlexReverse sx={{ width: "100%" , alignItems: "start" }}>
+        <Controller
+          name={name}
+          control={control}
+          render={({ field }) => (
+            <CustomInput
+              inputMode={props.inputMode || "text"}
+              placeholder={props.placeholder}
+              {...props}
+              {...field}
+            />
+          )}
+        />
+        {errors && errors[name] && (
+          <Box
             sx={{
-              borderColor: errors[name] ? theme.colorDanger : field.value || value ? theme.bgTertiary : theme.bgTertiary,
+              color: "red",
+              fontSize: isMobile ? "12px" : "13px",
+              marginTop: "0px",
+              fontWeight: "500",
+              ...sxError
             }}
-            hoverBorder={errors[name] ? theme.colorDanger : field.value || value ? theme.bgTertiary : theme.bgTertiary}
-          />
+          >
+            {errors[name].message}
+          </Box>
         )}
-      />
-      {errors && errors[name] && (
-        <CustomText style={{ color: theme.colorDanger, padding: '5px 0 0 12px' }}>{errors[name].message}</CustomText>
-      )}
-    </FlexReverse>
+      </FlexReverse>
+    </FormControl>
+
+
+
   );
 };
 

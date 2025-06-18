@@ -18,7 +18,7 @@ const useToastCustom = () => {
   // };
   const toastCustom = {
     default: toast,
-    toastSuccess: (messsage: string | ReactNode, props?: ToasterProps) => {
+    success: (messsage: string | ReactNode, props?: ToasterProps) => {
       toast.success(messsage, {
         style: {
           background: theme.bgTertiary,
@@ -28,7 +28,7 @@ const useToastCustom = () => {
         ...props
       });
     },
-    toastError: (messsage: string | ReactNode, props?: ToasterProps) => {
+    error: (messsage: string | ReactNode, props?: ToasterProps) => {
       toast.error(messsage, {
         style: {
           background: theme.bgTertiary,
@@ -38,7 +38,7 @@ const useToastCustom = () => {
         ...props
       });
     },
-    toastInfo: (messsage: string | ReactNode, props?: ToasterProps) => {
+    info: (messsage: string | ReactNode, props?: ToasterProps) => {
       toast.info(messsage, {
         style: {
           background: theme.bgTertiary,
@@ -48,7 +48,7 @@ const useToastCustom = () => {
         ...props
       });
     },
-    toastWarning: (messsage: string | ReactNode, props?: ToasterProps) => {
+    warning: (messsage: string | ReactNode, props?: ToasterProps) => {
       toast.warning(messsage, {
         style: {
           background: theme.bgTertiary,

@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import { I18nProviderClient } from "@/locales/clients";
 import Flex from "@/components/common/Flex";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { CircularProgress } from "@mui/material";
 
 function Providers({
   children,
@@ -23,11 +24,17 @@ function Providers({
             sx={{
               width: "100vw",
               height: "100dvh",
-              background: "#0a0d12",
+              background: "#fff",
               justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <div style={{ width: "30px", height: "30px", color: "#F5F5F6" }} className="animate-spin rounded-full border-4 border-solid border-primary border-t-transparent" />
+            <CircularProgress
+              thickness={4}
+              sx={{
+                color: "#181d27",
+              }}
+            />
           </Flex>
         }
       >

@@ -29,7 +29,7 @@ export const themes: { [key: string]: Theme } = {
   light: {
     bgDefault: "#ffffff", //1
     bgSecondary: "#e9e6e6", //2
-    bgTertiary: "#ffffff", //3
+    bgTertiary: "#fafafa", //3
     fgPrimary: "#181d27",
     fgSecondary: "#3b404a",
     fgTertiary: "#535862",
@@ -41,7 +41,7 @@ export const themes: { [key: string]: Theme } = {
     borderColorDanger: "#fed7d4",
     colorPrimary: "#368bff",
     bgColorPrimary: "#eff8ff",
-    borderColorPrimary: "#c9e7ff",
+    borderColorPrimary: "#63b7fb",
     borderComponent: "#bfc5cb",
     colorPurple: "#5925DC",
     bgColorPurple: "#f4f3ff",

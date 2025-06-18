@@ -106,7 +106,7 @@ const CustomInputNumber: React.FC<CustomInputNumberProps> = (props) => {
     customInput={CustomInputComponent}
     thousandSeparator=","
     allowNegative={false}
-    decimalScale={8}
+    decimalScale={3}
     decimalSeparator="."
     {...props}
   />;

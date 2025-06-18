@@ -14,7 +14,7 @@ const useCopyToClipboard = () => {
     navigator.clipboard.writeText(text).then(
       () => {
         setIsCopied(true);
-        toast.toastInfo('Copied')
+        toast.info('Copied')
         setTimeout(() => setIsCopied(false), 2000);
       },
       (err) => {

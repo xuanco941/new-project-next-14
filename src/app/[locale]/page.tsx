@@ -1,1 +1,1 @@
-export {default} from "@/view/assets/home/Home"
+export {default} from "@/view/home/Home";

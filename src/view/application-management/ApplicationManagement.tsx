@@ -1,4 +1,4 @@
-export default function AppManagementPermission() {
+export default function ApplicationManagement() {
   return (
     <div>
       <h1>App Management Permissions</h1>

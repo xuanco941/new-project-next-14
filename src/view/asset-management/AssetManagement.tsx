@@ -1,10 +1,9 @@
 "use client";
 import React from "react";
-import MainLayout from "@/layout/MainLayout";
 import { Box, Container } from "@mui/material";
 import FlexReverse from "@/components/common/FlexReverse";
 
-function Home() {
+function AssetManagement() {
   return (
       <Container maxWidth="lg">
         <FlexReverse sx={{ width: "100%", gap: "40px" }}>
@@ -17,4 +16,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default AssetManagement;

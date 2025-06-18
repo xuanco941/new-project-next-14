@@ -1,49 +1,51 @@
-import { Input, InputProps, SxProps, ThemeProvider, createTheme } from '@mui/material';
-import React, { memo, useState } from 'react';
+import {
+  Input,
+  InputProps,
+  SxProps,
+  ThemeProvider,
+  createTheme
+} from '@mui/material';
+import React, {
+  useState,
+  forwardRef,
+  ForwardRefRenderFunction
+} from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useTheme } from '@/providers/theme/ThemeProvider';
 import { baseFonts } from '@/utils/fonts';
 import Flex from '../Flex';
 
-interface CustomInputProps extends InputProps {
-  value: any;
-  handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+export interface CustomInputProps extends InputProps {
+  value?: any;
   type?: string;
-  handleKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  handleMouseDown?: (event: React.MouseEvent<HTMLInputElement>) => void;
-  handleBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-  handleClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
-  handleForcus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   sx?: SxProps;
   startAdornment?: React.ReactNode;
   endAdornment?: React.ReactNode;
   placeholder?: string;
   hoverBorder?: string;
-  [key: string]: any; // For any additional props
+  [key: string]: any;
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({
-  value,
-  handleChange,
-  type,
-  handleKeyDown,
-  handleMouseDown,
-  handleBlur,
-  handleClick,
-  handleForcus,
-  sx,
-  startAdornment,
-  endAdornment,
-  placeholder,
-  hoverBorder,
-  ...props
-}: any) => {
+// Sử dụng forwardRef để truyền ref vào thẻ DOM (Input)
+const CustomInput: ForwardRefRenderFunction<HTMLInputElement, CustomInputProps> = (
+  {
+    value,
+    type,
+    sx,
+    startAdornment,
+    endAdornment,
+    placeholder,
+    hoverBorder,
+    ...props
+  },
+  ref
+) => {
   const { theme } = useTheme();
   const [showPass, setShowPass] = useState(false);
 
   const Background = theme.bgDefault;
-  const BorderColor = theme.bgTertiary;
+  const BorderColor = theme.borderComponent;
   const HoverColor = hoverBorder || theme.borderColorPrimary;
   const ColorText = theme.fgPrimary;
   const ColorIcon = theme.fgTertiary;
@@ -55,18 +57,17 @@ const CustomInput: React.FC<CustomInputProps> = ({
         styleOverrides: {
           root: {
             '&:hover': {
-              borderColor: HoverColor,
-              // boxShadow:'0px 0px 0px 1px rgba(16, 24, 40, 0.18) inset, 0px 0px 0px 4px rgba(253, 234, 18, 0.24)'
+              borderColor: HoverColor
             },
             '&.Mui-focused': {
-              borderColor: HoverColor,
+              borderColor: HoverColor
             },
             '&.Mui-disabled': {
-              color: theme.fgTertiary, // Màu chữ khi input bị disabled
-              borderColor: theme.borderComponent,
-            },
-          },
-        },
+              color: theme.fgTertiary,
+              borderColor: theme.borderComponent
+            }
+          }
+        }
       },
       MuiInput: {
         styleOverrides: {
@@ -82,33 +83,30 @@ const CustomInput: React.FC<CustomInputProps> = ({
             '& input': { padding: '0 !important' },
             '&::after': { borderBottom: '0' },
             '&::before': { borderBottom: '0' },
-            '&:hover:not(.Mui-disabled, .Mui-error):before': { borderBottom: '0' },
+            '&:hover:not(.Mui-disabled, .Mui-error):before': {
+              borderBottom: '0'
+            },
             '.Mui-disabled': {
-              WebkitTextFillColor: `${theme.fgTertiary} !important`// Màu chữ khi input bị disabled
+              WebkitTextFillColor: `${theme.fgTertiary} !important`
             }
-
-          },
-        },
-      },
-    },
+          }
+        }
+      }
+    }
   });
+
   return (
     <ThemeProvider theme={themeInput}>
       <Input
         {...props}
+        inputRef={ref} // <== Truyền ref tại đây
         placeholder={placeholder || ''}
         sx={{ width: '100%', ...sx }}
-        type={type == 'password' ? (showPass ? 'text' : 'password') : type || 'text'}
+        type={type === 'password' ? (showPass ? 'text' : 'password') : type || 'text'}
         value={value}
-        onClick={handleClick}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-        onMouseDown={handleMouseDown}
-        onBlur={handleBlur}
-        onFocus={handleForcus}
         startAdornment={startAdornment || null}
         endAdornment={
-          type == 'password' && !endAdornment ? (
+          type === 'password' && !endAdornment ? (
             <Flex onClick={() => setShowPass(!showPass)} sx={{ cursor: 'pointer' }}>
               {showPass ? (
                 <VisibilityIcon sx={{ color: ColorIcon, fontSize: '20px' }} />
@@ -125,4 +123,4 @@ const CustomInput: React.FC<CustomInputProps> = ({
   );
 };
 
-export default memo(CustomInput);
+export default React.memo(forwardRef(CustomInput));

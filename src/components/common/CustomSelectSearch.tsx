@@ -168,14 +168,14 @@ const CustomSelectSearch: React.FC<CustomSelectProps> = ({
                 >
                   <CustomInput
                     value={valueSearch}
-                    handleChange={handleValueSearchChange}
+                    onChange={handleValueSearchChange}
                     placeholder="Tìm kiếm..."
                     startAdornment={
                       <Flex sx={{ paddingRight: "6px" }}>
                         <SearchIcon style={{ width: "18px" }} />
                       </Flex>
                     }
-                    handleClick={(event: any) => event.stopPropagation()} // Ngăn chặn sự kiện click để tránh đóng Popper
+                    onClick={(event: any) => event.stopPropagation()} // Ngăn chặn sự kiện click để tránh đóng Popper
                     sx={{
                       width: "100%",
                       borderRadius: "4px",

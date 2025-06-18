@@ -1,6 +1,6 @@
 import React from "react";
 import { SxProps, Theme } from "@mui/material/styles";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import { useTheme } from "@/providers/theme/ThemeProvider";
 import { baseFonts } from "@/utils/fonts";
 
@@ -8,12 +8,14 @@ type TextProps = React.ComponentPropsWithRef<typeof Button> & {
   sx?: SxProps<Theme>;
   isOutLine?: boolean;
   color?: React.CSSProperties["color"];
+  isLoading?: boolean;
 };
 
 const CustomButton: React.FC<TextProps> = ({
   children,
   sx,
   isOutLine = false,
+  isLoading = false,
   ...props
 }) => {
   const { theme } = useTheme();
@@ -48,7 +50,7 @@ const CustomButton: React.FC<TextProps> = ({
         ...sx,
       }}
     >
-      {children}
+      {isLoading ? <CircularProgress size={24} /> : children}
     </Button>
   ) : (
     <Button
@@ -71,13 +73,13 @@ const CustomButton: React.FC<TextProps> = ({
         },
         transition: "0.2s",
         color: '#ffffff',
-        background: theme.bgBlueLinear,
+        background: theme.colorPrimary,
         fontFamily: baseFonts.archivo,
         // boxShadow: "0px 2px 14px -1px #FFF inset, 0px 2px 8px -2px rgba(255, 255, 255, 0.20) inset",
         ...sx,
       }}
     >
-      {children}
+      {isLoading ? <CircularProgress sx={{ color: 'inherit' }} size={24} /> : children}
     </Button>
   );
 };

@@ -7,15 +7,15 @@ import { useEffect } from "react";
 function Loading({ title, size, fullPage, sx, scrollTop }: { title?: string, size?: string, fullPage?: boolean , sx?: SxProps, scrollTop?: boolean }) {
   const {theme} = useTheme();
 
-      useEffect(() => {
-          if (scrollTop) {
-              const appContainer = document.getElementById("app-container-center");
-              if (appContainer) {
-                  appContainer.scrollTo(0, 0);
-              }
-          }
+      // useEffect(() => {
+      //     if (scrollTop) {
+      //         const appContainer = document.getElementById("app-container-center");
+      //         if (appContainer) {
+      //             appContainer.scrollTo(0, 0);
+      //         }
+      //     }
   
-      }, []);
+      // }, []);
   return (
      <Box
       sx={{
